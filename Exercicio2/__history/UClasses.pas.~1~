@@ -1,0 +1,65 @@
+unit UFuncionario;
+
+interface
+
+type Funcionario = class
+  private
+    Fcpf: string;
+    Fsalario: extended;
+    Fnome: string;
+    procedure Setcpf(const Value: string);
+    procedure Setnome(const Value: string);
+    procedure Setsalario(const Value: extended);
+        property nome    : string read Fnome write Setnome;
+        property cpf     : string read Fcpf write Setcpf;
+        property salario : extended read Fsalario write Setsalario;
+  public
+end;
+
+type Dependente = class
+    private
+          property nome : string;
+    public
+      function IsCalcularIR : extended;
+      function IsCalcularINSS : extended;
+{    function Dependente.IsCalcularINSS: extended;
+             begin
+                    //
+             end;
+
+    function Dependente.IsCalcularIR: extended;
+             begin
+                  //
+             end;}
+end;
+
+implementation
+
+{ Dependente }
+function Dependente.IsCalcularINSS: extended;
+begin
+//
+end;
+
+function Dependente.IsCalcularIR: extended;
+begin
+  //
+end;
+
+{ Funcionario }
+procedure Funcionario.Setcpf(const Value: string);
+begin
+  Fcpf := Value;
+end;
+
+procedure Funcionario.Setnome(const Value: string);
+begin
+  Fnome := Value;
+end;
+
+procedure Funcionario.Setsalario(const Value: extended);
+begin
+  Fsalario := Value;
+end;
+
+end.

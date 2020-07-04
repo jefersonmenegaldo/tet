@@ -1,0 +1,58 @@
+unit UConexao;
+
+interface
+
+uses FireDAC.Stan.Intf, Vcl.Forms, FireDAC.Stan.Option, FireDAC.Stan.Error,
+     FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
+     FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, Data.DB, FireDAC.Comp.Client, FireDAC.Phys.MySQLDef,
+     FireDAC.Phys.FB, System.SysUtils, FireDAC.DApt, FireDAC.VCLUI.Wait;
+
+type classConexao = class
+     private
+           //FConn: TFDConnection;
+     public
+          function Comando: TFDQuery;
+
+          constructor Create;
+          destructor Destroy; override;
+end;
+implementation
+
+{ classConexao }
+function classConexao.Comando: TFDQuery;
+var
+   Query: TFDQuery;
+   FConn: TFDConnection;
+begin
+     FConn := TFDConnection.Create(nil);
+
+     FConn.Params.DriverID := 'FB';
+     FConn.Params.Database := ExtractFilePath(Application.ExeName) + 'DB.FDB';
+     FConn.Params.UserName := 'SYSDBA';
+     FConn.Params.Password := 'masterkey';
+
+     Query := TFDQuery.Create(nil);
+     Query.Connection := FConn;
+
+     Result := Query;
+end;
+constructor classConexao.Create;
+begin
+  inherited;
+     {FConn := TFDConnection.Create(nil);
+
+     FConn.Params.DriverID := 'FB';
+     FConn.Params.Database := ExtractFilePath(Application.ExeName) + 'DB.FDB';
+     FConn.Params.UserName := 'SYSDBA';
+     FConn.Params.Password := 'masterkey';
+      }
+
+end;
+
+destructor classConexao.Destroy;
+begin
+    // FConn.Free;
+  inherited;
+end;
+
+end.

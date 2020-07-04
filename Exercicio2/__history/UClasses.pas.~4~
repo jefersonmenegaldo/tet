@@ -1,0 +1,53 @@
+unit UClasses;
+
+interface
+
+uses System.Generics.Collections;
+
+type Dependente = class
+   { private
+          property FNome : string;
+    public
+          property Nome    : string  read FNome    write FNome;
+          function IsCalcularIR : extended;
+          function IsCalcularINSS : extended;
+{    function Dependente.IsCalcularINSS: extended;
+             begin
+                    //
+             end;
+
+    function Dependente.IsCalcularIR: extended;
+             begin
+                  //
+             end;}
+end;
+
+type Funcionario = class
+     private
+          FNome    : string;
+          FCpf     : string;
+          FSalario : Extended;
+          FListaDependentes: TList<Dependente>;
+
+     protected
+        { protected declarations }
+     public
+
+          property Nome    : string  read FNome    write FNome;
+          property Cpf     : string  read FCpf     write FCpf;
+          property Salario : Extended read FSalario write FSalario;
+          property ListaDependentes: TList<Dependente> read FListaDependentes
+                                                            write FListaDependentes;
+          constructor Create;
+          destructor Destroy; override;
+
+     published
+
+end;
+
+
+
+implementation
+
+
+end.

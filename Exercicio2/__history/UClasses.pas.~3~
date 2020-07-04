@@ -1,0 +1,75 @@
+unit UClasses;
+
+interface
+
+type Funcionario = class
+      private
+    03    FNome    : string;
+    04    FCpf     : string;
+          FSalario : Extended;
+    05    FListaDependentes: TObjectList<Dependente>;
+    06    { private declarations }
+     protected
+        { protected declarations }
+      public
+        { public declarations }
+        property ID      : Integer read FID      write FID;
+        property Nome    : string  read FNome    write FNome;
+          property Cpf     : string  read FCpf     write FCpf;
+          property Salario : string  read FSalario write FSalario;
+        property ListaDependentes: TObjectList<Dependente> read FListaDependentes
+                                                         write FListaDependentes;
+        constructor Create;
+      destructor Destroy; override;
+
+   published
+       { published declarations }
+end;
+
+type Dependente = class
+    private
+          property nome : string;
+    public
+      function IsCalcularIR : extended;
+      function IsCalcularINSS : extended;
+{    function Dependente.IsCalcularINSS: extended;
+             begin
+                    //
+             end;
+
+    function Dependente.IsCalcularIR: extended;
+             begin
+                  //
+             end;}
+end;
+
+implementation
+
+{ Dependente }
+function Dependente.IsCalcularINSS: extended;
+begin
+//
+end;
+
+function Dependente.IsCalcularIR: extended;
+begin
+  //
+end;
+
+{ Funcionario }
+procedure Funcionario.Setcpf(const Value: string);
+begin
+  Fcpf := Value;
+end;
+
+procedure Funcionario.Setnome(const Value: string);
+begin
+  Fnome := Value;
+end;
+
+procedure Funcionario.Setsalario(const Value: extended);
+begin
+  Fsalario := Value;
+end;
+
+end.

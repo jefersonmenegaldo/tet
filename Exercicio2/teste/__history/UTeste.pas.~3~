@@ -1,0 +1,46 @@
+unit UTeste;
+
+interface
+uses
+  DUnitX.TestFramework, UControllers;
+
+type
+
+  [TestFixture]
+  TMyTestObject = class(TObject) 
+  public
+
+  private
+        FuncController : controllerFuncionario;
+        [Test]
+        procedure TestarCalculoSalario;
+
+        [Setup]
+        procedure Setup;
+        [TearDown]
+        procedure TearDown;
+  end;
+
+implementation
+
+procedure TMyTestObject.Setup;
+begin
+end;
+
+procedure TMyTestObject.TearDown;
+begin
+end;
+
+
+procedure TMyTestObject.TestarCalculoSalario;
+var
+   Resultado : String;
+begin
+    Resultado := FuncController.CalculaSalario('100');
+    Assert.AreEqual();
+    IsTrue(Resultado = '12312312312', 'TPessoa.TratarCPFCNPJ retornou um erro');
+end;
+
+initialization
+  TDUnitX.RegisterTestFixture(TMyTestObject);
+end.

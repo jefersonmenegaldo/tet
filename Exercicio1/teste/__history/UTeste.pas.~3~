@@ -1,0 +1,56 @@
+unit UTeste;
+
+interface
+uses
+  DUnitX.TestFramework, UCalculos;
+
+type
+
+  [TestFixture]
+  TMyTestObject = class(TObject)
+  private
+    calculo : classCalculo;
+  public
+    [Setup]
+    procedure Setup;
+    [TearDown]
+    procedure TearDown;
+    [teste]
+    procedure TestaImpostoA;
+    [teste]
+    procedure TestaImpostoB;
+    [teste]
+    procedure TestaImpostoC;
+  end;
+
+implementation
+
+procedure TMyTestObject.Setup;
+begin
+    calculo := classCalculo.Create;
+end;
+
+procedure TMyTestObject.TearDown;
+begin
+end;
+
+
+procedure TMyTestObject.TestaImpostoA;
+begin
+     Assert.IsTrue();
+    //
+end;
+
+procedure TMyTestObject.TestaImpostoB;
+begin
+     //
+end;
+
+procedure TMyTestObject.TestaImpostoC;
+begin
+     //
+end;
+
+initialization
+  TDUnitX.RegisterTestFixture(TMyTestObject);
+end.

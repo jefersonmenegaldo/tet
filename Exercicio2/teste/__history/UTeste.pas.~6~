@@ -1,0 +1,52 @@
+unit UTeste;
+
+interface
+uses
+  DUnitX.TestFramework, UControllers;
+
+type
+
+  [TestFixture]
+  TMyTestObject = class(TObject) 
+  private
+
+  public
+        FuncController : controllerFuncionario;
+        [Setup]
+        procedure Setup;
+        [TearDown]
+        procedure TearDown;
+        [Test]
+        procedure TestarCalculoINSS;
+
+        [Test] procedure TestarCalculoIR;
+  end;
+
+implementation
+
+procedure TMyTestObject.Setup;
+begin
+end;
+
+procedure TMyTestObject.TearDown;
+begin
+end;
+
+
+procedure TMyTestObject.TestarCalculoINSS;
+begin
+     Assert.IsTrue(FuncController.CalculaINSS(1000) = 80, 'Controller Funcionario - Calcular INSS');
+end;
+
+procedure TMyTestObject.TestarCalculoIR;
+var
+  resultado : Extended;
+begin
+     resultado := 0;
+     resultado := FuncController.CalculaIR(1000,2);
+     Assert.IsTrue(resultado = 120, 'Controller Funcionario - Calcular IR');
+end;
+
+initialization
+  TDUnitX.RegisterTestFixture(TMyTestObject);
+end.

@@ -1,0 +1,150 @@
+unit UCalculos;
+
+interface
+
+Uses System.Generics.Collections, SysUtils;
+
+type classOperacoesRealizadas = class
+     private
+            FOperacao: string;
+            FValor: extended;
+     public
+           constructor Create(Operacao: string; Valor: extended);
+           property Operacao: string read FOperacao write FOperacao;
+           property Valor: extended read FValor write FValor;
+end;
+
+type classCalculo = class
+      private
+             FListaOperacoes: TObjectList<classOperacoesRealizadas>;
+             FResultados: integer;
+             FPrimeiroNumero: extended;
+             FSegundoNumero: extended;
+             FOperacoesRealizadas: integer;
+             FNumero: string;
+             FOperacaoAtual: integer;
+
+      public
+            property PrimeiroNumero: extended read FPrimeiroNumero write FPrimeiroNumero;
+            property SegundoNumero: extended  read FSegundoNumero  write FSegundoNumero;
+            property Numero: string  read FNumero  write FNumero;
+            property OperacaoAtual: integer  read FOperacaoAtual  write FOperacaoAtual;
+            property OperacoesRealizadas: integer read FOperacoesRealizadas write FOperacoesRealizadas;
+            property Resultados: integer         read FResultados           write FResultados;
+
+            property ListaOperacoes: TObjectList<classOperacoesRealizadas>
+                     read FListaOperacoes write FListaOperacoes;
+
+            procedure Reiniciar;
+
+            function CalculaValores() : Extended;
+            function RetornaOperacao( v_tipo : string): string;
+            function CalculaImpostoA(v_Valor: extended): extended;
+            function CalculaImpostoB(v_Valor: extended): extended;
+            function CalculaImpostoC(v_Valor: extended): extended;
+            constructor Create;
+end;
+
+implementation
+
+{ classCalculo }
+
+function classCalculo.CalculaImpostoA(v_Valor: extended): extended;
+var
+   v_porcentagem,
+   v_valorfixo : Extended;
+
+begin
+     v_porcentagem := 20;
+     v_valorfixo   := 500;
+
+     //descobre 20% do valor
+     Result := (v_porcentagem / 100) * v_valor;
+
+     // valor * (20% do valor) - 500
+     Result := (v_Valor * result) - 500;
+end;
+
+function classCalculo.CalculaImpostoB(v_Valor: extended): extended;
+begin
+     Result := CalculaImpostoA(v_Valor) - 15;
+end;
+
+function classCalculo.CalculaImpostoC(v_Valor: extended): extended;
+begin
+     Result := CalculaImpostoA(v_valor) + CalculaImpostoB(v_valor);
+end;
+
+function classCalculo.RetornaOperacao(v_tipo: string): string;
+var
+   v_Operacao    : String;
+   v_primeiraVez : Boolean;
+begin
+     v_Operacao := UpperCase(Copy(v_tipo, Pos('_',v_tipo) + 1,Length(v_tipo)));
+
+     //verifica se é a primeira vez que entra aqui
+     v_primeiraVez := FOperacaoAtual = -1 ;
+
+     if v_Operacao = 'MULTIPLICACAO' then
+        begin
+             FOperacaoAtual := 0;
+             Result := '*';
+        end;
+
+     if v_Operacao = 'DIVISAO' then
+        begin
+             FOperacaoAtual := 1;
+             Result := '/';
+        end;
+
+     if v_Operacao = 'SOMA' then
+        begin
+             FOperacaoAtual := 2;
+             Result := '+';
+        end;
+
+     if v_Operacao = 'SUBTRACAO' then
+        begin
+             FOperacaoAtual := 3;
+             Result := '-';
+        end;
+
+     if v_primeiraVez then
+        Result := '=';
+end;
+
+function classCalculo.CalculaValores(): Extended;
+begin
+     case OperacaoAtual of
+          0 : result := FPrimeiroNumero * StrToFloat(FNumero);
+          1 : result := FPrimeiroNumero / StrToFloat(FNumero);
+          2 : result := FPrimeiroNumero + StrToFloat(FNumero);
+          3 : result := FPrimeiroNumero - StrToFloat(FNumero);
+     end;
+
+end;
+
+constructor classCalculo.Create;
+begin
+     ListaOperacoes := TObjectList<classOperacoesRealizadas>.Create;
+     Reiniciar;
+end;
+
+procedure classCalculo.Reiniciar;
+begin
+     FPrimeiroNumero      := 0;
+     FSegundoNumero       := 0;
+     FOperacoesRealizadas := 0;
+     FResultados          := 0;
+     FOperacaoAtual       := -1;
+end;
+
+{ classOperacoesRealizadas }
+
+constructor classOperacoesRealizadas.Create(Operacao: string; Valor: extended );
+begin
+     FOperacao := Operacao;
+     FValor    := Valor;
+end;
+
+end.

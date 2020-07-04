@@ -1,0 +1,31 @@
+unit UTeste;
+
+interface
+uses
+  DUnitX.TestFramework, UControllers;
+
+type
+
+  [TestFixture]
+  TMyTestObject = class(TObject) 
+  public
+    [Setup]
+    procedure Setup;
+    [TearDown]
+    procedure TearDown;
+  end;
+
+implementation
+
+procedure TMyTestObject.Setup;
+begin
+end;
+
+procedure TMyTestObject.TearDown;
+begin
+end;
+
+
+initialization
+  TDUnitX.RegisterTestFixture(TMyTestObject);
+end.

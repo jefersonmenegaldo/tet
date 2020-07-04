@@ -1,0 +1,16 @@
+program Projeto;
+
+uses
+  Vcl.Forms,
+  Exercicio2 in 'Exercicio2.pas' {Form1},
+  UModels in 'UModels.pas',
+  UControllers in 'UControllers.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TForm1, Form1);
+  Application.Run;
+end.

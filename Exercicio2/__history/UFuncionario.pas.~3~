@@ -1,0 +1,15 @@
+unit UFuncionario;
+
+interface
+
+type Funcionario = class
+  private
+        nome    : string;
+        cpf     : string;
+        salario : extended;
+  public
+end;
+
+implementation
+
+end.

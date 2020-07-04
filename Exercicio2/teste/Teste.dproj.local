@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2020/07/03 19:39:36.000.783,=C:\Users\Programador\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/07/03 19:40:27.000.980,C:\Users\Programador\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\Programador\Documents\Moto\teste-delphi\Exercicio2\teste\UTeste.pas</Transaction>
+    <Transaction>2020/07/03 19:40:38.000.799,C:\Users\Programador\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\Programador\Documents\Moto\teste-delphi\Exercicio2\teste\Teste.dproj</Transaction>
+    <Transaction>2020/07/03 19:54:17.000.389,=C:\Users\Programador\Documents\Moto\teste-delphi\Exercicio2\UControllers.pas</Transaction>
+    <Transaction>2020/07/03 19:55:12.000.924,=C:\Users\Programador\Documents\Moto\teste-delphi\Exercicio2\UModels.pas</Transaction>
+    <Transaction>2020/07/03 19:55:37.000.950,=C:\Users\Programador\Documents\Moto\teste-delphi\Exercicio2\UConexao.pas</Transaction>
+  </Transactions>
+</BorlandProject>
